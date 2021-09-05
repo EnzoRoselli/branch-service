@@ -6,12 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "branches")
@@ -24,17 +19,16 @@ public class Branch {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column(name = "name")
+    @Column(name = "name", nullable = false)
     private String name;
-    @Column(name = "user_id")
-    private Long userID;
-    @Column(name = "address")
+    @Column(name = "user_id", nullable = false)
+    private Long userId;
+    @Column(name = "address", nullable = false)
     private String address;
-    @Column(name = "city")
+    @Column(name = "city", nullable = false)
     private String city;
     @Column(name = "latitude")
     private String latitude;
     @Column(name = "longitude")
     private String longitude;
-
 }

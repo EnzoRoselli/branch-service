@@ -10,6 +10,5 @@ import java.util.List;
 @Repository
 public interface BranchRepository extends JpaRepository<Branch,Long> {
 
-    @Query(value = "Select * from branches where user_id=?1",nativeQuery = true)
-    List<Branch> getByUserID(Long userID);
+    List<Branch> getByUserId(Long userID);
 }
