@@ -12,6 +12,5 @@ public class AwsXrayConfig {
 	@Bean
 	public Filter TracingFilter() {
 		return new AWSXRayServletFilter("company");
-
 	}
 }

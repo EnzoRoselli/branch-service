@@ -2,6 +2,7 @@ package tesis.company.controllers;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.MethodArgumentNotValidException;
@@ -32,7 +33,7 @@ public class ExceptionController {
     }
 
     @ResponseStatus(HttpStatus.NOT_FOUND)
-    @ExceptionHandler(BranchNotFoundException.class)
+    @ExceptionHandler({BranchNotFoundException.class, EmptyResultDataAccessException.class})
     public ErrorMessage notFound(Exception ex, WebRequest request){
         log.error(ex.getMessage());
         log.error(Arrays.toString(ex.getStackTrace()));

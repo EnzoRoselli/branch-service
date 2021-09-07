@@ -24,7 +24,7 @@ public class BranchController {
     }
 
     @DeleteMapping("{id}")
-    public void delete(@PathVariable("id") Long id) {
+    public void deleteById(@PathVariable("id") Long id) {
         branchService.deleteById(id);
     }
 
@@ -32,7 +32,7 @@ public class BranchController {
     public Branch getById(@PathVariable("id") Long id) { return branchService.getById(id); }
 
     @GetMapping
-    public List<Branch> getByUserId(@RequestParam("user_id") Long userId){
+    public List<Branch> getByUserId(@RequestParam("userId") Long userId){
         return branchService.getByUserId(userId);
     }
 }
