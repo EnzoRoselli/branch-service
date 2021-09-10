@@ -1,4 +1,4 @@
-package tesis.company.exceptions;
+package mymarket.branch.exceptions;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

@@ -1,10 +1,10 @@
-package tesis.company.services;
+package mymarket.branch.services;
 
 import lombok.RequiredArgsConstructor;
+import mymarket.branch.exceptions.BranchNotFoundException;
+import mymarket.branch.models.Branch;
+import mymarket.branch.repositories.BranchRepository;
 import org.springframework.stereotype.Service;
-import tesis.company.exceptions.BranchNotFoundException;
-import tesis.company.models.Branch;
-import tesis.company.repositories.BranchRepository;
 
 import java.util.List;
 

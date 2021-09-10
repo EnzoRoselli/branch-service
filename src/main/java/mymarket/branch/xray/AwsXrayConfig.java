@@ -1,4 +1,4 @@
-package tesis.company.xray;
+package mymarket.branch.xray;
 
 import com.amazonaws.xray.javax.servlet.AWSXRayServletFilter;
 import org.springframework.context.annotation.Bean;
@@ -11,6 +11,6 @@ public class AwsXrayConfig {
 
 	@Bean
 	public Filter TracingFilter() {
-		return new AWSXRayServletFilter("company");
+		return new AWSXRayServletFilter("branch");
 	}
 }

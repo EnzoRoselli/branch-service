@@ -1,6 +1,9 @@
-package tesis.company.controllers;
+package mymarket.branch.controllers;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import mymarket.branch.exceptions.BranchNotFoundException;
+import mymarket.branch.models.Branch;
+import mymarket.branch.services.BranchService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -15,9 +18,6 @@ import org.springframework.http.MediaType;
 import org.springframework.mock.web.MockHttpServletResponse;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
-import tesis.company.exceptions.BranchNotFoundException;
-import tesis.company.models.Branch;
-import tesis.company.services.BranchService;
 
 import java.util.ArrayList;
 import java.util.Arrays;

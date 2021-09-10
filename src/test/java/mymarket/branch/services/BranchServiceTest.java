@@ -1,5 +1,8 @@
-package tesis.company.services;
+package mymarket.branch.services;
 
+import mymarket.branch.exceptions.BranchNotFoundException;
+import mymarket.branch.models.Branch;
+import mymarket.branch.repositories.BranchRepository;
 import org.assertj.core.api.BDDAssertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -7,10 +10,6 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
-import tesis.company.exceptions.BranchNotFoundException;
-import tesis.company.models.Branch;
-import tesis.company.repositories.BranchRepository;
-
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -18,10 +17,11 @@ import java.util.List;
 import java.util.Optional;
 
 import static com.googlecode.catchexception.apis.BDDCatchException.caughtException;
-import static org.mockito.ArgumentMatchers.*;
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.mockito.BDDMockito.*;
 import static com.googlecode.catchexception.apis.BDDCatchException.when;
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.mockito.ArgumentMatchers.anyList;
+import static org.mockito.ArgumentMatchers.anyLong;
+import static org.mockito.BDDMockito.*;
 
 
 @ExtendWith(MockitoExtension.class)
