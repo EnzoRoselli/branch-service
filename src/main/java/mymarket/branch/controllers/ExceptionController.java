@@ -1,10 +1,11 @@
-package tesis.company.controllers;
+package mymarket.branch.controllers;
 
 import lombok.extern.slf4j.Slf4j;
+import mymarket.branch.exceptions.BranchNotFoundException;
+import mymarket.branch.exceptions.ErrorMessage;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.MissingServletRequestParameterException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -12,8 +13,6 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.method.annotation.MethodArgumentTypeMismatchException;
-import tesis.company.exceptions.BranchNotFoundException;
-import tesis.company.exceptions.ErrorMessage;
 
 import java.time.LocalDateTime;
 import java.util.Arrays;
@@ -23,8 +22,8 @@ import java.util.Arrays;
 public class ExceptionController {
 
     @ResponseStatus(HttpStatus.BAD_REQUEST)
-    @ExceptionHandler({MissingServletRequestParameterException.class,
-            MethodArgumentTypeMismatchException.class, DataIntegrityViolationException.class, MethodArgumentNotValidException.class})
+    @ExceptionHandler({MissingServletRequestParameterException.class, MethodArgumentTypeMismatchException.class,
+            DataIntegrityViolationException.class, MethodArgumentNotValidException.class})
     public ErrorMessage badRequest(Exception ex, WebRequest request) {
         log.error(ex.getMessage());
         log.error(Arrays.toString(ex.getStackTrace()));

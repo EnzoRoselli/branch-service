@@ -1,13 +1,11 @@
-package tesis.company.controllers;
+package mymarket.branch.controllers;
 
 import com.amazonaws.xray.spring.aop.XRayEnabled;
-import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
+import mymarket.branch.models.Branch;
+import mymarket.branch.services.BranchService;
 import org.springframework.web.bind.annotation.*;
-import tesis.company.models.Branch;
-import tesis.company.services.BranchService;
 
-import javax.websocket.server.PathParam;
 import java.util.List;
 
 @RequestMapping("/branches")

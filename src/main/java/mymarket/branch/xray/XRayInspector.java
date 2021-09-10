@@ -1,4 +1,4 @@
-package tesis.company.xray;
+package mymarket.branch.xray;
 
 import com.amazonaws.xray.entities.Subsegment;
 import com.amazonaws.xray.spring.aop.BaseAbstractXRayInterceptor;

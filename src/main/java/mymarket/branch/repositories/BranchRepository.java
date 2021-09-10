@@ -1,9 +1,8 @@
-package tesis.company.repositories;
+package mymarket.branch.repositories;
 
+import mymarket.branch.models.Branch;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
-import tesis.company.models.Branch;
 
 import java.util.List;
 
