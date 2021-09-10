@@ -1,5 +1,6 @@
 package tesis.company.services;
 
+import org.assertj.core.api.BDDAssertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -10,14 +11,17 @@ import tesis.company.exceptions.BranchNotFoundException;
 import tesis.company.models.Branch;
 import tesis.company.repositories.BranchRepository;
 
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
+import static com.googlecode.catchexception.apis.BDDCatchException.caughtException;
 import static org.mockito.ArgumentMatchers.*;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.BDDMockito.*;
+import static com.googlecode.catchexception.apis.BDDCatchException.when;
 
 
 @ExtendWith(MockitoExtension.class)
@@ -88,13 +92,16 @@ public class BranchServiceTest {
     @Test
     public void getById_NonexistentId_BranchNotFoundException(){
         //given
-        willThrow(new BranchNotFoundException("")).given(branchRepository).findById(anyLong());
+        willThrow(new BranchNotFoundException("Branch with id 1 not found.")).given(branchRepository).findById(anyLong());
 
         //when
-        try { branchService.getById(1L); } catch (BranchNotFoundException ignored){}
+        when(() -> branchService.getById(1L));
 
         //then
-        then(branchRepository).should().findById(1L);
+        BDDAssertions.then(caughtException())
+                .isInstanceOf(BranchNotFoundException.class)
+                .hasMessage("Branch with id 1 not found.")
+                .hasNoCause();
     }
 
     @Test
