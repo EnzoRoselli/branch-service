@@ -24,7 +24,7 @@ public class ExceptionController {
 
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     @ExceptionHandler({MissingServletRequestParameterException.class,
-            MethodArgumentTypeMismatchException.class, DataIntegrityViolationException.class})
+            MethodArgumentTypeMismatchException.class, DataIntegrityViolationException.class, MethodArgumentNotValidException.class})
     public ErrorMessage badRequest(Exception ex, WebRequest request) {
         log.error(ex.getMessage());
         log.error(Arrays.toString(ex.getStackTrace()));
