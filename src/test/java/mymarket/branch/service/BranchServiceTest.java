@@ -92,7 +92,7 @@ public class BranchServiceTest {
     @Test
     public void getById_NonexistentId_BranchNotFoundException(){
         //given
-        willThrow(new BranchNotFoundException("Branch with id 1 not found.")).given(branchRepository).findById(anyLong());
+        given(branchRepository.findById(anyLong())).willReturn(Optional.empty());
 
         //when
         when(() -> branchService.getById(1L));
