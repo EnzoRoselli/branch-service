@@ -1,4 +1,4 @@
-package mymarket.branch.exceptions;
+package mymarket.branch.exception;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

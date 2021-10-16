@@ -1,6 +1,6 @@
-package mymarket.branch.repositories;
+package mymarket.branch.repository;
 
-import mymarket.branch.models.Branch;
+import mymarket.branch.model.Branch;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

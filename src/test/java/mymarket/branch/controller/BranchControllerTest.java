@@ -1,9 +1,9 @@
-package mymarket.branch.controllers;
+package mymarket.branch.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import mymarket.branch.exceptions.BranchNotFoundException;
-import mymarket.branch.models.Branch;
-import mymarket.branch.services.BranchService;
+import mymarket.branch.exception.BranchNotFoundException;
+import mymarket.branch.model.Branch;
+import mymarket.branch.service.BranchService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;

@@ -1,9 +1,9 @@
-package mymarket.branch.controllers;
+package mymarket.branch.controller;
 
 import com.amazonaws.xray.spring.aop.XRayEnabled;
 import lombok.RequiredArgsConstructor;
-import mymarket.branch.models.Branch;
-import mymarket.branch.services.BranchService;
+import mymarket.branch.model.Branch;
+import mymarket.branch.service.BranchService;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;

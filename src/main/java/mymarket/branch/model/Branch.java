@@ -1,4 +1,4 @@
-package mymarket.branch.models;
+package mymarket.branch.model;
 
 import lombok.*;
 

@@ -1,8 +1,8 @@
-package mymarket.branch.services;
+package mymarket.branch.service;
 
-import mymarket.branch.exceptions.BranchNotFoundException;
-import mymarket.branch.models.Branch;
-import mymarket.branch.repositories.BranchRepository;
+import mymarket.branch.exception.BranchNotFoundException;
+import mymarket.branch.model.Branch;
+import mymarket.branch.repository.BranchRepository;
 import org.assertj.core.api.BDDAssertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

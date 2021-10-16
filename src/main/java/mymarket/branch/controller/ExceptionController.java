@@ -1,8 +1,8 @@
-package mymarket.branch.controllers;
+package mymarket.branch.controller;
 
 import lombok.extern.slf4j.Slf4j;
-import mymarket.branch.exceptions.BranchNotFoundException;
-import mymarket.branch.exceptions.ErrorMessage;
+import mymarket.branch.exception.BranchNotFoundException;
+import mymarket.branch.exception.ErrorMessage;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.http.HttpStatus;
