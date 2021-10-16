@@ -130,9 +130,9 @@
                             <excludes>
                                 <exclude>**/*BranchApplication.class</exclude>
                                 <exclude>**/xray/**</exclude>
-                                <exclude>**/exceptions/**</exclude>
-                                <exclude>**/models/**</exclude>
-                                <exclude>**/configs/**</exclude>
+                                <exclude>**/exception/**</exclude>
+                                <exclude>**/model/**</exclude>
+                                <exclude>**/config/**</exclude>
                             </excludes>
                         </configuration>
                     </execution>
