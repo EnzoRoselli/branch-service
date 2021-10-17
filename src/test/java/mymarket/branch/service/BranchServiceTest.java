@@ -1,8 +1,8 @@
 package mymarket.branch.service;
 
-import mymarket.branch.exception.BranchNotFoundException;
 import mymarket.branch.model.Branch;
 import mymarket.branch.repository.BranchRepository;
+import mymarket.exception.commons.exception.NotFoundException;
 import org.assertj.core.api.BDDAssertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -46,7 +46,7 @@ public class BranchServiceTest {
     }
 
     @Test
-    public void save_ExpectedValues_Ok(){
+    public void save_ExpectedValues_Ok() {
         //given
         given(branchRepository.saveAll(anyList())).willReturn(branches);
 
@@ -61,7 +61,7 @@ public class BranchServiceTest {
     }
 
     @Test
-    public void deleteById_ExpectedValues_Ok(){
+    public void deleteById_ExpectedValues_Ok() {
         //given
         willDoNothing().given(branchRepository).deleteById(anyLong());
 
@@ -75,7 +75,7 @@ public class BranchServiceTest {
     }
 
     @Test
-    public void getById_ExpectedValues_Ok(){
+    public void getById_ExpectedValues_Ok() {
         //given
         Optional<Branch> branch = Optional.of(branch1);
         given(branchRepository.findById(anyLong())).willReturn(branch);
@@ -90,7 +90,7 @@ public class BranchServiceTest {
     }
 
     @Test
-    public void getById_NonexistentId_BranchNotFoundException(){
+    public void getById_NonexistentId_BranchNotFoundException() {
         //given
         given(branchRepository.findById(anyLong())).willReturn(Optional.empty());
 
@@ -99,13 +99,13 @@ public class BranchServiceTest {
 
         //then
         BDDAssertions.then(caughtException())
-                .isInstanceOf(BranchNotFoundException.class)
+                .isInstanceOf(NotFoundException.class)
                 .hasMessage("Branch with id 1 not found.")
                 .hasNoCause();
     }
 
     @Test
-    public void getByUserId_ExpectedValues_Ok(){
+    public void getByUserId_ExpectedValues_Ok() {
         //given
         given(branchRepository.getByUserId(anyLong())).willReturn(branches);
 

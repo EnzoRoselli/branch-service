@@ -27,10 +27,12 @@ public class BranchController {
     }
 
     @GetMapping("{id}")
-    public Branch getById(@PathVariable("id") Long id) { return branchService.getById(id); }
+    public Branch getById(@PathVariable("id") Long id) {
+        return branchService.getById(id);
+    }
 
     @GetMapping
-    public List<Branch> getByUserId(@RequestParam("userId") Long userId){
+    public List<Branch> getByUserId(@RequestParam("userId") Long userId) {
         return branchService.getByUserId(userId);
     }
 }

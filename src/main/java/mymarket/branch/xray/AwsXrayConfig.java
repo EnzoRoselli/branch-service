@@ -9,8 +9,8 @@ import javax.servlet.Filter;
 @Configuration
 public class AwsXrayConfig {
 
-	@Bean
-	public Filter TracingFilter() {
-		return new AWSXRayServletFilter("branch");
-	}
+    @Bean
+    public Filter TracingFilter() {
+        return new AWSXRayServletFilter("branch");
+    }
 }

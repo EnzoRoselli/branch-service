@@ -1,9 +1,9 @@
 package mymarket.branch.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import mymarket.branch.exception.BranchNotFoundException;
 import mymarket.branch.model.Branch;
 import mymarket.branch.service.BranchService;
+import mymarket.exception.commons.exception.NotFoundException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -142,7 +142,7 @@ public class BranchControllerTest {
     @Test
     public void getById_NonexistentId_BranchNotFoundException() throws Exception {
         //given
-        willThrow(new BranchNotFoundException("")).given(branchService).getById(anyLong());
+        willThrow(new NotFoundException("")).given(branchService).getById(anyLong());
 
         //when
         MockHttpServletResponse response = mockMvc.perform(get("/branches/150")
