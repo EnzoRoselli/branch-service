@@ -60,6 +60,10 @@ docker run -p 8080:8080
 -e DB_PASSWORD=9f1e2b88-fa7f-418f-9406-799d52abb3b3 
 enzoroselli/branch
 ```
+## Code quality with Jacoco (code coverage library)
+
+- Every repository MUST have at least %80 of code coverage. **More code coverage == Less headache** => **true**
+- It creates code coverage reports in the folder: build -> site -> jacoco -> index.html
 
 ## Branching (GitFlow) :sparkler:
 
