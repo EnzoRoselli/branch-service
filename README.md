@@ -67,7 +67,7 @@ enzoroselli/branch
 
 To see if we have a good code coverage, we have to run:
 ```
-Maven -> LifeCycle -> verify
+Maven -> LifeCycle -> Verify
 ```
 
 ## Branching (GitFlow) :sparkler:
