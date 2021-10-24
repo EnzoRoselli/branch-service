@@ -65,6 +65,11 @@ enzoroselli/branch
 - Every repository MUST have at least %80 of code coverage. **More code coverage == Less headache** => **true**
 - It creates code coverage reports in the folder: build -> site -> jacoco -> index.html
 
+To see if we have a good code coverage, we have to run:
+```
+Maven -> LifeCycle -> verify
+```
+
 ## Branching (GitFlow) :sparkler:
 
 - Feature_MigrateToPhone: Local/remote branch for a feature. After merge it in develop, delete it.
