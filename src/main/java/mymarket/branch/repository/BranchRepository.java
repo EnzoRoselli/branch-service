@@ -7,7 +7,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface BranchRepository extends JpaRepository<Branch,Long> {
+public interface BranchRepository extends JpaRepository<Branch, Long> {
 
     List<Branch> getByUserId(Long userID);
 }

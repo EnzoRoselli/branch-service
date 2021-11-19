@@ -62,5 +62,6 @@ public class BranchController {
                 .path("/{userId}")
                 .buildAndExpand(branch.getUserId())
                 .toUri();
+
     }
 }
