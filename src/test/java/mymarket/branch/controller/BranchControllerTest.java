@@ -60,7 +60,7 @@ public class BranchControllerTest {
     @Test
     public void save_ExpectedValues_Ok() throws Exception {
         //given
-        given(branchService.save(anyList())).willReturn(branches);
+        given(branchService.save(branches)).willReturn(branches);
 
         //when
         MockHttpServletResponse response = mockMvc.perform(post("/branches/")
@@ -79,7 +79,8 @@ public class BranchControllerTest {
     @Test
     public void save_MissingValues_DataIntegrityViolationException() throws Exception {
         //given
-        given(branchController.save(anyList())).willThrow(new DataIntegrityViolationException(""));
+        branches.get(0).setName(null);
+        given(branchController.save(branches)).willThrow(new DataIntegrityViolationException(""));
 
         //when
         MockHttpServletResponse response = mockMvc.perform(post("/branches/")
@@ -96,76 +97,82 @@ public class BranchControllerTest {
     @Test
     public void deleteById_ExpectedValues_Ok() throws Exception {
         //given
-        willDoNothing().given(branchService).deleteById(anyLong());
+        willDoNothing().given(branchService).deleteById(branch1.getId());
 
         //when
-        MockHttpServletResponse response = mockMvc.perform(delete("/branches/4")
+        MockHttpServletResponse response = mockMvc.perform(delete("/branches/" + branch1.getId())
                 .accept(MediaType.APPLICATION_JSON))
                 .andReturn().getResponse();
 
         //then
-        then(branchService).should().deleteById(4L);
+        then(branchService).should().deleteById(branch1.getId());
         assertThat(response.getStatus()).isEqualTo(HttpStatus.OK.value());
     }
 
     @Test
     public void deleteById_NonexistentId_EmptyResultDataAccessException() throws Exception {
+        Long errorIdNumber = 150L;
+
         //given
         willThrow(new EmptyResultDataAccessException(0)).given(branchService).deleteById(anyLong());
 
         //when
-        MockHttpServletResponse response = mockMvc.perform(delete("/branches/150")
+        MockHttpServletResponse response = mockMvc.perform(delete("/branches/" + errorIdNumber)
                 .accept(MediaType.APPLICATION_JSON))
                 .andReturn().getResponse();
 
         //then
-        then(branchService).should().deleteById(150L);
+        then(branchService).should().deleteById(errorIdNumber);
         assertThat(response.getStatus()).isEqualTo(HttpStatus.NOT_FOUND.value());
     }
 
     @Test
     public void getById_ExpectedValues_Ok() throws Exception {
         //given
-        given(branchService.getById(anyLong())).willReturn(branch1);
+        given(branchService.getById(branch1.getId())).willReturn(branch1);
 
         //when
-        MockHttpServletResponse response = mockMvc.perform(get("/branches/4")
+        MockHttpServletResponse response = mockMvc.perform(get("/branches/" + branch1.getId())
                 .accept(MediaType.APPLICATION_JSON))
                 .andReturn().getResponse();
 
         //then
-        then(branchService).should().getById(4L);
+        then(branchService).should().getById(branch1.getId());
         assertThat(response.getStatus()).isEqualTo(HttpStatus.OK.value());
         assertThat(response.getContentAsString()).isEqualTo(asJsonString(branch1));
     }
 
     @Test
     public void getById_NonexistentId_BranchNotFoundException() throws Exception {
+        Long errorIdNumber = 150L;
+
         //given
-        willThrow(new NotFoundException("")).given(branchService).getById(anyLong());
+        willThrow(new NotFoundException("")).given(branchService).getById(errorIdNumber);
 
         //when
-        MockHttpServletResponse response = mockMvc.perform(get("/branches/150")
+        MockHttpServletResponse response = mockMvc.perform(get("/branches/" + errorIdNumber)
                 .accept(MediaType.APPLICATION_JSON))
                 .andReturn().getResponse();
 
         //then
-        then(branchService).should().getById(150L);
+        then(branchService).should().getById(errorIdNumber);
         assertThat(response.getStatus()).isEqualTo(HttpStatus.NOT_FOUND.value());
     }
 
     @Test
     public void getByUserId_ExpectedValues_Ok() throws Exception {
+        Long userId = branches.get(0).getUserId();
+
         //given
-        given(branchService.getByUserId(anyLong())).willReturn(branches);
+        given(branchService.getByUserId(userId)).willReturn(branches);
 
         //when
-        MockHttpServletResponse response = mockMvc.perform(get("/branches?userId=40")
+        MockHttpServletResponse response = mockMvc.perform(get("/branches?userId=" + userId)
                 .accept(MediaType.APPLICATION_JSON))
                 .andReturn().getResponse();
 
         //then
-        then(branchService).should().getByUserId(40L);
+        then(branchService).should().getByUserId(userId);
         assertThat(response.getStatus()).isEqualTo(HttpStatus.OK.value());
         assertThat(response.getContentAsString()).isEqualTo(asJsonString(branches));
     }

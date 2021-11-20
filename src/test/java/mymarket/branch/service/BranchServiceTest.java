@@ -48,7 +48,7 @@ public class BranchServiceTest {
     @Test
     public void save_ExpectedValues_Ok() {
         //given
-        given(branchRepository.saveAll(anyList())).willReturn(branches);
+        given(branchRepository.saveAll(branches)).willReturn(branches);
 
         //when
         List<Branch> branchList = branchService.save(branches);
@@ -78,13 +78,13 @@ public class BranchServiceTest {
     public void getById_ExpectedValues_Ok() {
         //given
         Optional<Branch> branch = Optional.of(branch1);
-        given(branchRepository.findById(anyLong())).willReturn(branch);
+        given(branchRepository.findById(branch1.getId())).willReturn(branch);
 
         //when
-        Branch branchFromRepository = branchService.getById(1L);
+        Branch branchFromRepository = branchService.getById(branch1.getId());
 
         //then
-        then(branchRepository).should().findById(1L);
+        then(branchRepository).should().findById(branch1.getId());
         assertThat(branchFromRepository).isNotNull();
         assertThat(branchFromRepository).isEqualTo(branch.get());
     }
@@ -106,14 +106,16 @@ public class BranchServiceTest {
 
     @Test
     public void getByUserId_ExpectedValues_Ok() {
+        Long userId = branches.get(0).getUserId();
+
         //given
-        given(branchRepository.getByUserId(anyLong())).willReturn(branches);
+        given(branchRepository.getByUserId(userId)).willReturn(branches);
 
         //when
-        List<Branch> branchList = branchService.getByUserId(1L);
+        List<Branch> branchList = branchService.getByUserId(userId);
 
         //then
-        then(branchRepository).should().getByUserId(1L);
+        then(branchRepository).should().getByUserId(userId);
         assertThat(branchList).isNotNull();
         assertThat(branchList).hasSize(2);
         assertThat(branchList).isEqualTo(branches);
