@@ -71,6 +71,12 @@ public class BranchControllerTest {
 
         //then
         then(branchService).should().save(branches);
+
+        assertThat(response).isNotNull();
+        assertThat(response.getStatus()).isNotNull();
+        assertThat(response.getContentType()).isNotNull();
+        assertThat(response.getContentAsString()).isNotNull();
+
         assertThat(response.getStatus()).isEqualTo(HttpStatus.OK.value());
         assertThat(response.getContentType()).isEqualTo(MediaType.APPLICATION_JSON.toString());
         assertThat(response.getContentAsString()).isEqualTo(asJsonString(branches));
@@ -91,6 +97,8 @@ public class BranchControllerTest {
 
         //then
         then(branchService).should().save(branches);
+        assertThat(response).isNotNull();
+        assertThat(response.getStatus()).isNotNull();
         assertThat(response.getStatus()).isEqualTo(HttpStatus.BAD_REQUEST.value());
     }
 
@@ -106,6 +114,10 @@ public class BranchControllerTest {
 
         //then
         then(branchService).should().deleteById(branch1.getId());
+
+        assertThat(response).isNotNull();
+        assertThat(response.getStatus()).isNotNull();
+        assertThat(response.getContentType()).isNotNull();
         assertThat(response.getStatus()).isEqualTo(HttpStatus.OK.value());
     }
 
@@ -123,6 +135,10 @@ public class BranchControllerTest {
 
         //then
         then(branchService).should().deleteById(errorIdNumber);
+
+        assertThat(response).isNotNull();
+        assertThat(response.getStatus()).isNotNull();
+        assertThat(response.getContentType()).isNotNull();
         assertThat(response.getStatus()).isEqualTo(HttpStatus.NOT_FOUND.value());
     }
 
@@ -138,6 +154,10 @@ public class BranchControllerTest {
 
         //then
         then(branchService).should().getById(branch1.getId());
+
+        assertThat(response).isNotNull();
+        assertThat(response.getStatus()).isNotNull();
+        assertThat(response.getContentType()).isNotNull();
         assertThat(response.getStatus()).isEqualTo(HttpStatus.OK.value());
         assertThat(response.getContentAsString()).isEqualTo(asJsonString(branch1));
     }
@@ -156,6 +176,10 @@ public class BranchControllerTest {
 
         //then
         then(branchService).should().getById(errorIdNumber);
+
+        assertThat(response).isNotNull();
+        assertThat(response.getStatus()).isNotNull();
+        assertThat(response.getContentType()).isNotNull();
         assertThat(response.getStatus()).isEqualTo(HttpStatus.NOT_FOUND.value());
     }
 
@@ -173,6 +197,11 @@ public class BranchControllerTest {
 
         //then
         then(branchService).should().getByUserId(userId);
+
+        assertThat(response).isNotNull();
+        assertThat(response.getStatus()).isNotNull();
+        assertThat(response.getContentType()).isNotNull();
+        assertThat(response.getContentAsString()).isNotNull();
         assertThat(response.getStatus()).isEqualTo(HttpStatus.OK.value());
         assertThat(response.getContentAsString()).isEqualTo(asJsonString(branches));
     }

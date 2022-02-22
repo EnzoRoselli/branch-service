@@ -55,8 +55,11 @@ public class BranchServiceTest {
 
         //then
         then(branchRepository).should().saveAll(branches);
+
+
         assertThat(branchList).isNotNull();
-        assertThat(branchList).hasSize(2);
+        assertThat(branchList).isNotEmpty();
+        assertThat(branchList).hasSize(branches.size());
         assertThat(branchList).isEqualTo(branches);
     }
 
@@ -86,7 +89,11 @@ public class BranchServiceTest {
         //then
         then(branchRepository).should().findById(branch1.getId());
         assertThat(branchFromRepository).isNotNull();
-        assertThat(branchFromRepository).isEqualTo(branch.get());
+        assertThat(branchFromRepository.getAddress()).isEqualTo(branch.get().getAddress());
+        assertThat(branchFromRepository.getCity()).isEqualTo(branch.get().getCity());
+        assertThat(branchFromRepository.getId()).isEqualTo(branch.get().getId());
+        assertThat(branchFromRepository.getName()).isEqualTo(branch.get().getName());
+
     }
 
     @Test
@@ -117,6 +124,7 @@ public class BranchServiceTest {
         //then
         then(branchRepository).should().getByUserId(userId);
         assertThat(branchList).isNotNull();
+        assertThat(branchList).isNotEmpty();
         assertThat(branchList).hasSize(2);
         assertThat(branchList).isEqualTo(branches);
     }
